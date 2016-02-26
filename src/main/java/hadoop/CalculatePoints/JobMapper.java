@@ -19,7 +19,8 @@ public class JobMapper extends Mapper<LongWritable, Text, Text, IntWritable>{
 			throws IOException, InterruptedException {
 		String line = value.toString();
 		String[] records = line.split(",");
-		String points = records[8];
+		String points = records[8].replace("\"", "");;
+		
 		IntWritable p = new IntWritable(Integer.parseInt(points));
 		StringTokenizer st = new StringTokenizer(line," ");
 		context.write(new Text(records[0]),p );
