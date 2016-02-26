@@ -41,7 +41,6 @@ public class CalculatePoints extends Configured implements Tool{
 		job.setReducerClass(JobReducer.class);
 	
 		int returnValue = job.waitForCompletion(true) ? 0:1;
-		JobReducer.
 		System.out.println("job.isSuccessful " + job.isSuccessful());
 		return returnValue;
 	}
