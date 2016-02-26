@@ -41,7 +41,7 @@ public class NumberOfUniquePlayers extends Configured implements Tool{
 		job.setReducerClass(NumberOfUniquePlayersReducer.class);
 	
 		int returnValue = job.waitForCompletion(true) ? 0:1;
-		NumberOfUniquePlayersReducer.
+		
 		System.out.println("job.isSuccessful " + job.isSuccessful());
 		return returnValue;
 	}
