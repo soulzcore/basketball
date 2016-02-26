@@ -1,4 +1,4 @@
-package hadoop.NumberOfUniquePlayers;
+package hadoop.CalculatePoints;
 
 
 import org.apache.hadoop.conf.Configured;
@@ -12,10 +12,10 @@ import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
 import org.apache.hadoop.util.Tool;
 import org.apache.hadoop.util.ToolRunner;
 
-public class NumberOfUniquePlayers extends Configured implements Tool{
+public class CalculatePoints extends Configured implements Tool{
 	
 	public static void main(String[] args) throws Exception{
-		int exitCode = ToolRunner.run(new NumberOfUniquePlayers(), args);
+		int exitCode = ToolRunner.run(new CalculatePoints(), args);
 		System.exit(exitCode);
 	}
  
@@ -28,7 +28,7 @@ public class NumberOfUniquePlayers extends Configured implements Tool{
 		}
 	
 		Job job = new org.apache.hadoop.mapreduce.Job();
-		job.setJarByClass(NumberOfUniquePlayers.class);
+		job.setJarByClass(CalculatePoints.class);
 		job.setJobName("WordCounter");
 		
 		FileInputFormat.addInputPath(job, new Path(args[0]));
@@ -37,11 +37,11 @@ public class NumberOfUniquePlayers extends Configured implements Tool{
 		job.setOutputKeyClass(Text.class);
 		job.setOutputValueClass(IntWritable.class);
 		job.setOutputFormatClass(TextOutputFormat.class);
-		job.setMapperClass(NumberOfUniquePlayersMapper.class);
-		job.setReducerClass(NumberOfUniquePlayersReducer.class);
+		job.setMapperClass(JobMapper.class);
+		job.setReducerClass(JobReducer.class);
 	
 		int returnValue = job.waitForCompletion(true) ? 0:1;
-		NumberOfUniquePlayersReducer.
+		JobReducer.
 		System.out.println("job.isSuccessful " + job.isSuccessful());
 		return returnValue;
 	}
