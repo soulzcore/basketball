@@ -17,10 +17,15 @@ public class WordCountMapper extends Mapper<LongWritable, Text, Text, IntWritabl
 			Context context)
 			throws IOException, InterruptedException {
 		String line = value.toString();
+		String[] records = line.split(",");
 		StringTokenizer st = new StringTokenizer(line," ");
+		context.write(new Text(records[1]), one);
+		
+		/*
 		while(st.hasMoreTokens()){
 			word.set(st.nextToken());
 			context.write(word,one);
 		}
+		*/
 	}
 }
