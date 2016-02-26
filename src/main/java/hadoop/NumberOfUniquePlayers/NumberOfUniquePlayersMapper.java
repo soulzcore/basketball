@@ -19,7 +19,7 @@ public class NumberOfUniquePlayersMapper extends Mapper<LongWritable, Text, Text
 		String line = value.toString();
 		String[] records = line.split(",");
 		StringTokenizer st = new StringTokenizer(line," ");
-		context.write(new Text(records[1]), one);
+		context.write(new Text(records[0]), one);
 		
 		/*
 		while(st.hasMoreTokens()){
