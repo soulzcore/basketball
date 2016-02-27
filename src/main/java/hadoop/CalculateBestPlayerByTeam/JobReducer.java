@@ -36,7 +36,7 @@ public class JobReducer extends Reducer<Text, MapWritable, Text, Text>{
 		}
 		
 		int totPoints = 0;
-		String playerName="";
+		Text playerName=new Text("");
 		
 		 Set set = hm.entrySet();
 	      // Get an iterator
@@ -47,7 +47,7 @@ public class JobReducer extends Reducer<Text, MapWritable, Text, Text>{
 	         
 	         if((Integer)me.getValue()>totPoints){
 	        	 totPoints = (Integer)me.getValue();
-	        	 playerName=(String)me.getKey();
+	        	 playerName=(Text)me.getKey();
 	        	 
 	         }
 	      }
