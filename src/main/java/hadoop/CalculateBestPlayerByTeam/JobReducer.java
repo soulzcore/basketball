@@ -31,7 +31,8 @@ public class JobReducer extends Reducer<Text, MapWritable, Text, Text>{
 			IntWritable po = (IntWritable) mw.get("points");
 			
 			//addPlayer(new String(name.getBytes(),StandardCharsets.UTF_8),po.get());
-			addPlayer(name,po.get());
+			//addPlayer(name,po.get());
+			addPlayer(name,123);
 		}
 		
 		int totPoints = 0;
