@@ -29,7 +29,7 @@ public class JobReducer extends Reducer<Text, MapWritable, Text, Text>{
 			MapWritable mw = valuesIt.next();
 			Text name = (Text)mw.get("name");
 			IntWritable po = (IntWritable) mw.get("points");
-			
+			System.out.println(new String(name.getBytes()));
 			addPlayer(new String(name.getBytes(),StandardCharsets.UTF_8),po.get());
 		}
 		
