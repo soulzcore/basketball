@@ -51,7 +51,7 @@ public class JobReducer extends Reducer<Text, MapWritable, Text, Text>{
 	        	 
 	         }
 	      }
-		context.write(key, new Text(playerName));
+		context.write(key, new Text("Test"));
 	}	
 	
 	public void addPlayer(Text name, int points){
