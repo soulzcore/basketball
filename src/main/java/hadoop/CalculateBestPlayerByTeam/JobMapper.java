@@ -23,8 +23,11 @@ public class JobMapper extends Mapper<LongWritable, Text, Text, MapWritable>{
 		String[] records = line.split(",");
 		String points = records[8].replace("\"", "");;
 		MapWritable mp = new MapWritable();
+		
+		
 		mp.put(new Text("name"),new Text(records[0]));
 		mp.put(new Text("points"),new Text(records[8]));
+	
 		
 		IntWritable p = new IntWritable(Integer.parseInt(points));
 		StringTokenizer st = new StringTokenizer(line," ");

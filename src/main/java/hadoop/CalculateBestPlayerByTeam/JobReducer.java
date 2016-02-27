@@ -16,7 +16,7 @@ import org.apache.hadoop.mapreduce.Reducer;
 public class JobReducer extends Reducer<Text, MapWritable, Text, Text>{
 
 	
-	HashMap<String, Integer> hm = new HashMap<String, Integer>();
+	HashMap<Text, Integer> hm = new HashMap<Text, Integer>();
 	@Override
 	protected void reduce(Text key, Iterable<MapWritable> values,
 			Context context)
@@ -30,7 +30,8 @@ public class JobReducer extends Reducer<Text, MapWritable, Text, Text>{
 			Text name = (Text)mw.get("name");
 			IntWritable po = (IntWritable) mw.get("points");
 			System.out.println(new String(name.getBytes()));
-			addPlayer(new String(name.getBytes(),StandardCharsets.UTF_8),po.get());
+			//addPlayer(new String(name.getBytes(),StandardCharsets.UTF_8),po.get());
+			addPlayer(name,po.get());
 		}
 		
 		int totPoints = 0;
@@ -52,7 +53,7 @@ public class JobReducer extends Reducer<Text, MapWritable, Text, Text>{
 		context.write(key, new Text(playerName));
 	}	
 	
-	public void addPlayer(String name, int points){
+	public void addPlayer(Text name, int points){
 		if(hm.containsKey(name)){
 			hm.put(name, hm.get(name)+points);
 		}else{
